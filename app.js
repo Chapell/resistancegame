@@ -78,13 +78,31 @@ class Mission {
   }
 }
 
-var kiskutya = new Player("John", true);
-var kiskutya2 = new Player("Mary", false);
-var kiskutya3 = new Player("Jasmine", false);
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-var players = [ kiskutya, kiskutya2, kiskutya3 ];
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
 
-var elso = new Mission(players);
-elso.doMission();
+io.on('connection', function(socket){
+  socket.on('ready', function(msg){
+    console.log('ready: ', msg);
+  });
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
+
+var playerOne = new Player("John", true);
+var playerTwo = new Player("Mary", false);
+var playerThree = new Player("Jasmine", false);
+
+var players = [ playerOne, playerTwo, playerThree ];
+
+var firstMission = new Mission(players);
+firstMission.doMission();
 
 console.log();

@@ -1,0 +1,9 @@
+{
+    "name": "Resistance",
+    "version": "0.0.1",
+    "description": "Resistance online version",
+    "dependencies": {
+        "express" : "latest",
+        "socket.io" : "latest"
+    }
+}

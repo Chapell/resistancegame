@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>The Resistance</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" placeholder="Név"/><button>Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.emit('ready', 'true');
+    </script>
+  </body>
+</html>
